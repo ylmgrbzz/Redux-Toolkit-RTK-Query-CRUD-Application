@@ -1,6 +1,7 @@
 import {
   useContactsQuery,
   useDeleteContactMutation,
+  useContactQuery,
 } from "../services/ContactsApi";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
