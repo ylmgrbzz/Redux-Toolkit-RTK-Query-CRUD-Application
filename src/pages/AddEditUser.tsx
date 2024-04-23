@@ -33,8 +33,9 @@ const AddEditUser = () => {
       toast.error("Please provide value into each input field");
     } else {
       if (!editMode) {
-        navigate("/");
         await addContact(formValue);
+        navigate("/");
+
         toast.success("Contact Added Successfully");
       } else {
         navigate("/");
