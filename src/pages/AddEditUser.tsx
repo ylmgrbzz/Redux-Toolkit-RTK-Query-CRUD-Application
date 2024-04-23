@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import {
   useAddContactMutation,
   useContactQuery,
+  useUpdateConcatMutation,
 } from "../services/ContactsApi";
 import "./AddEditUser.css";
 
@@ -19,6 +20,7 @@ const AddEditUser = () => {
   const [editMode, setEditMode] = useState(false);
   const { name, email, contact } = formValue;
   const [addContact] = useAddContactMutation();
+  const [updateContact] = useUpdateConcatMutation();
   const navigate = useNavigate();
   const { id } = useParams();
   const { data, error, isLoading, isSuccess, isError } = useContactQuery(id!);
@@ -46,6 +48,7 @@ const AddEditUser = () => {
 
         toast.success("Contact Added Successfully");
       } else {
+        await updateContact(formValue);
         navigate("/");
         setEditMode(false);
         toast.success("Contact Updated Successfully");
